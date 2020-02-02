@@ -26,16 +26,16 @@ class EmployeeForm extends Component {
         return ( 
             <form onSubmit={this.onSubmitHandler}>
             <label>Employee Name:</label>
-            <input name="name" value={this.state.carForm.name} onChange={this.onChangeHandler}/>
+            <input name="name" value={this.state.EmployeeForm.name} onChange={this.onChangeHandler}/>
             <br/><br/>
             <label>Employee Email:</label>
-            <input name="email" value={this.state.carForm.model} onChange={this.onChangeHandler}/>
+            <input name="email" value={this.state.EmployeeForm.email} onChange={this.onChangeHandler}/>
             <br/><br/>
             <label>Password:</label>
-            <input name="password" value={this.state.carForm.color} onChange={this.onChangeHandler}/>
+            <input name="password" value={this.state.EmployeeForm.password} onChange={this.onChangeHandler}/>
             <br/><br/>
             <label>Password Confirmation:</label>
-            <input name="passwordConfirmation" value={this.state.carForm.pasenger} onChange={this.onChangeHandler} />
+            <input name="passwordConfirmation" value={this.state.EmployeeForm.passwordConfirmation} onChange={this.onChangeHandler} />
             <br/><br/>
             <input type="submit"/>
         </form>
