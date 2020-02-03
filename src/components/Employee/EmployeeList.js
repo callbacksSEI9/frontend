@@ -12,24 +12,25 @@ class EmployeeList extends Component {
         const user = this.props.user
         axios({
             method:'GET',
-            url:apiUrl+'/departments',
+            url:apiUrl+'/departments:department_id',
             headers:{
                 "Authorization":`Bearer ${user.token}`
             }
         })
         .then((res)=>{
+            console.log(res.data)
             this.setState(({...copyState})=>{
                 copyState = res.data
                 return copyState
             })
         })
-        .catch(error=>alert.error(error))
+        .catch(error=>alert(error))
     }
     render() { 
         return ( 
             <ListGroup>
                 {this.state.employees.map((employee,index) => ( 
-                    <EmployeeItem key={index} employee_name={employee.name}></EmployeeItem>
+                    <EmployeeItem key={index} employee_name={employee.email}></EmployeeItem>
                 ))}     
             </ListGroup>
         );
