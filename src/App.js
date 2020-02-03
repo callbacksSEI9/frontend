@@ -51,9 +51,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/home' render={()=> 
-            user.manager? (<ManagerView user={user} />):(<p>Employee View</p>)
-          } />
+          <ManagerView user={user} />
   
 
         </main>

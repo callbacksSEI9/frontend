@@ -9,7 +9,7 @@ class TaskList extends Component {
     componentDidMount(){
         const user=this.props.user
         axios({
-            url: apiUrl + "/tasks",
+            url: apiUrl + "/tasks"+`?type=${this.props.type}`,
             method: "get",
             headers:{
                 "Authorization":`Bearer ${user.token}`
