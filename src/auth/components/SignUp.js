@@ -32,7 +32,7 @@ class SignUp extends Component {
       .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ name:'', email: '', password: '', passwordConfirmation: '' })
         alert(messages.signUpFailure, 'danger')
       })
   }
