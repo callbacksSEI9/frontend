@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class EmployeeForm extends Component {
      state = { 
-        EmployeeForm={
+        EmployeeForm:{
         name:'',
         email:'',
         passord:'',
@@ -18,9 +18,9 @@ class EmployeeForm extends Component {
         })}
         onSubmitHandler = event => {
           event.preventDefault()
-          create(this.state.EmployeeForm)
-          .then(res => (res.data))
-          .catch(err => alert(err))
+        //   create(this.state.EmployeeForm)
+        //   .then(res => (res.data))
+        //   .catch(err => alert(err))
       }
     render() { 
         return ( 
