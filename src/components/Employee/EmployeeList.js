@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ListGroup from "bootstrap"
+import ListGroup from 'react-bootstrap/ListGroup'
 import EmployeeItem from "./EmployeeItem"
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
