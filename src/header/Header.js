@@ -5,12 +5,17 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    {this.PaymentResponse.user?
-    <Link to='/myemployees' />:
-    <Link to='/otheremployees' />}
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
   </React.Fragment>
+)
+
+const managerView = (
+  <Link to='/myemployees' />
+)
+
+const employeeView = (
+  <Link to='/otheremployees' >Ohter Tasks</Link>
 )
 
 const unauthenticatedOptions = (
@@ -30,8 +35,9 @@ const Header = ({ user }) => (
   <div>
     <aside className="nav">
       <img src='https://i.ibb.co/Npf74xt/app-logo1.png' className='logo'/>
+      { user && <span>Welcome, {user.name}</span>}
       { alwaysOptions }
-      { user && <span>Welcome, {user.email}</span>}
+      { user ? (user.manager ? managerView : employeeView):''}
       { user ? authenticatedOptions : unauthenticatedOptions }
     </aside>
   </div>

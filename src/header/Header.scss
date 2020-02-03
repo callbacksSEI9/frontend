@@ -1,5 +1,6 @@
 .nav{
   background: #1b1b1b;
+  color: #FFF;
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
@@ -10,6 +11,7 @@
   z-index: 1;
   overflow-x: hidden;
   padding-top: 30px;
+  align-items: center;
 }
 
 .nav a {
