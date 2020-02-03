@@ -5,6 +5,9 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
+    {this.PaymentResponse.user?
+    <Link to='/myemployees' />:
+    <Link to='/otheremployees' />}
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
   </React.Fragment>
@@ -24,14 +27,14 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <header className="main-header">
-    <h1>Uber, But For Taxis</h1>
-    <nav>
+  <div>
+    <aside className="nav">
+      <img src='https://i.ibb.co/Npf74xt/app-logo1.png' className='logo'/>
+      { alwaysOptions }
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
-      { alwaysOptions }
-    </nav>
-  </header>
+    </aside>
+  </div>
 )
 
 export default Header

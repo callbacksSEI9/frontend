@@ -21,20 +21,8 @@ class ManagerView extends Component {
     
     render() { 
 
-        const navbar = (<div className="wrapper">
-                            <nav id="sidebar">
-                            <ul className="list-unstyled components">
-
-                            <li><a href="#" onClick={this.changeTastFiler}>Incomplete</a></li>
-                            <li><a href="#" onClick={this.changeTastFiler}>complete</a></li>
-                            <li><a href="#" onClick={this.changeTastFiler}>In Progress</a></li>
-                            </ul>
-                            </nav>
-                        </div>)
-
         return (
             <div>
-            <Route path='/' render={()=> navbar} />
             <Route path='/' exact render={()=> 
                 <div>
                 {/* <TaskForm /> */}
