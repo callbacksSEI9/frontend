@@ -10,7 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
 import ManagerView from './components/ManagerView/ManagerView';
-
+import EmployeeList from './components/Employee/EmployeeList'
 class App extends Component {
   constructor () {
     super()
@@ -54,7 +54,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/home' render={()=> 
             user.manager? (<ManagerView user={user} />):(<p>Employee View</p>)
           } />
-  
+           <AuthenticatedRoute user={user} path='/emp' render={()=> 
+             (<EmployeeList user={user} />)
+          } />
 
         </main>
       </React.Fragment>
