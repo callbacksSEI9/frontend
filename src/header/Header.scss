@@ -1,5 +1,10 @@
 .nav{
   background: #1b1b1b;
+  opacity:0.9;
+
+  background-image: url(https://isorepublic.com/wp-content/uploads/2019/01/iso-republic-black-square-texture-1100x733.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #FFF;
   display: flex;
   flex-flow: column nowrap;
@@ -12,7 +17,9 @@
   overflow-x: hidden;
   padding-top: 30px;
   align-items: center;
+
 }
+
 
 .nav a {
   text-align: center;
