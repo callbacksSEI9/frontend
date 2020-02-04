@@ -29,6 +29,12 @@ $charcoal: #ccc;
   background-color: $error;
 }
 
+.container{
+  margin-left: 20%;
+  padding: 0px 10px;
+  max-width: 80%;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -45,9 +51,4 @@ $charcoal: #ccc;
     align-self: flex-end;
     max-width: 200px;
   }
-}
-
-main{
-  margin-left: 230px;
-  padding: 0px 10px;
 }

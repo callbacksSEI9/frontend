@@ -11,6 +11,8 @@ import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
 import ManagerView from './components/ManagerView/ManagerView';
 import EmployeeList from './components/Employee/EmployeeList'
+import EmployeeView from './components/Employee/EmployeeView';
+
 class App extends Component {
   constructor () {
     super()
@@ -51,8 +53,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/home' render={()=> 
-            user.manager? (<ManagerView user={user} />):(<p>Employee View</p>)
+          <AuthenticatedRoute user={user} path='/' exact render={()=> 
+            user.manager? (<EmployeeView user={user} />):(<ManagerView user={user} />)
           } />
            <AuthenticatedRoute user={user} path='/emp' render={()=> 
              (<EmployeeList user={user} />)
