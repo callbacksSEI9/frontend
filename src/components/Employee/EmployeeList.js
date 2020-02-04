@@ -18,15 +18,22 @@ class EmployeeList extends Component {
             }
         })
         .then((res)=>{
-            console.log(res.data)
-            this.setState(({...copyState})=>{
-                copyState = res.data
-                return copyState
-            })
+           let employees = res.data.employees
+           console.log(employees)
+            this.setState({employees:employees})
+            // this.setState(({...copyState})=>{
+            //     copyState = res.data.departments[0].employees
+            //     return copyState
+            // })
+            console.log(employees)
         })
         .catch(error=>alert(error))
     }
     render() { 
+        {this.state.employees.map((employee,index) => ( 
+            console.log(employee.email)
+            // <EmployeeItem key={index} employee_name={employee.email}></EmployeeItem>
+        ))}  
         return ( 
             <ListGroup>
                 {this.state.employees.map((employee,index) => ( 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import ListGroup from "bootstrap"
-
+import ListGroup from "react-bootstrap/ListGroup"
+import ListGroupItem from "react-bootstrap/ListGroupItem"
 class EmployeeItem extends Component {
 
     render() { 
         return ( 
-            <ListGroup.item>
+            <ListGroupItem>
                 {this.props.employee_name}
-            </ListGroup.item>
+            </ListGroupItem>
         );
     }
 }
