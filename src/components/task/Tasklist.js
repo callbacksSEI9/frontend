@@ -27,7 +27,7 @@ class TaskList extends Component {
                 return copyState
             })
         })
-        .catch(error=>alert.error(error))
+        .catch(error=>console.error(error))
     }
     render() { 
         return ( 

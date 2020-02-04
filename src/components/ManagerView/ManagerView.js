@@ -6,7 +6,8 @@ import TaskList from '../task/Tasklist'
 
 class ManagerView extends Component {
     state = { 
-        taskFilter: 'none'
+        taskFilter: 'none',
+        display: 'none'
      }
 
 
@@ -18,19 +19,28 @@ class ManagerView extends Component {
         const task = event.target.innerHTML
         this.setState({taskFilter:task})
     }
+
+    displayForm = ()=>{
+        this.setState( {display: "block"})
+    }
+    closeForm = ()=>{
+        this.setState( {display: "none"})
+    }
     
     render() { 
 
         return (
             <div>
-            <Route path='/' exact render={()=> 
-                <div>
                 {/* <TaskForm /> */}
-                <EmployeeForm />
+                <button id="addEmployee" onClick={this.displayForm}>Add Employee</button>
+                <div className="Popup" style={ {display: this.state.display} }>
+                    <div className="form">
+                    <span classname="close" onClick={this.closeForm}>&times;</span>
+                    <EmployeeForm />
+                    </div>
+                </div>
                 {/* <Chart /> */}
                 <TaskList user={this.props.user} type={this.state.taskFilter} />
-                </div>
-            } />
             </div>
           );
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TaskList from '../task/Tasklist'
-import Route from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 class EmployeeView extends Component {
     state = {  }
@@ -10,9 +10,8 @@ class EmployeeView extends Component {
         </div>)
         return ( 
             <div>
-                <Route path='/' render={()=> navbar} />
                 <Route path='/' exact={()=> 
-                <TaskList />    
+                <TaskList user={this.props.user} />    
             } />
                 
             </div>
