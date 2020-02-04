@@ -9,7 +9,7 @@ import {withRouter} from 'react-router-dom'
 
 class TaskList extends Component {
     state = { 
-        Tasks:[]
+        tasks:[]
      }
     componentDidMount(){
         const user=this.props.user
@@ -21,22 +21,23 @@ class TaskList extends Component {
             }
         })
         .then((res)=>{
-           
             this.setState(({...copyState})=>{
                 copyState = res.data
                 return copyState
             })
         })
-        .catch(error=>alert.error(error))
+        .catch(error=>console.error(error))
     }
     render() { 
+        console.log(this.state.tasks)
         return ( 
             <div>
+                <h1>Tasks:</h1>
                 <ListGroup >
-                    {this.state.Tasks.map((task,index)=>( 
-                    <TaskItem key={index} taskName={task} />
+                    {this.state.tasks.map((task,index)=>( 
+                    <TaskItem key={index} taskName={task.title} />
                     ))}
-                   {/* <FormTask /> */}
+                  
                 </ListGroup>
 
             </div>
