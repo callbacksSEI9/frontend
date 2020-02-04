@@ -12,7 +12,7 @@ class EmployeeList extends Component {
         const user = this.props.user
         axios({
             method:'GET',
-            url:apiUrl+'/departments:department_id',
+            url:apiUrl+'/departments',
             headers:{
                 "Authorization":`Bearer ${user.token}`
             }
