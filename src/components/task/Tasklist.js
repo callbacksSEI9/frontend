@@ -13,9 +13,13 @@ class TaskList extends Component {
      }
     componentDidMount(){
         const user=this.props.user
+        
         axios({
-            method: "GET",
+            method: "post",
             url: apiUrl + "/tasks",
+            data:{
+                status: 'none'
+            },
             headers:{
                 "Authorization":`Bearer ${user.token}`
             }
@@ -35,7 +39,7 @@ class TaskList extends Component {
                 <h1>Tasks:</h1>
                 <ListGroup >
                     {this.state.tasks.map((task,index)=>( 
-                    <TaskItem key={index} taskName={task.title} />
+                    <TaskItem key={index} taskName={task.title} status={task.status} taskId={task._id} user={this.props.user} />
                     ))}
                   
                 </ListGroup>

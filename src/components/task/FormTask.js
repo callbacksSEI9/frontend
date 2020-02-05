@@ -44,18 +44,15 @@ class FormTask extends Component {
     render() { 
         return ( 
             <div>
-  <form onSubmit={this.onSubmitHandler}>
+            <form className="custom-form" onSubmit={this.onSubmitHandler}>
             <label>Task title :</label>
             <input name="title" value={this.state.FormTask.title} onChange={this.onChangeHandler}/>
-            <br/><br/>
             <label> Text:</label>
             <input name="text" value={this.state.FormTask.text} onChange={this.onChangeHandler}/>
-            <br/><br/>
             <label> Deadline:</label>
             <input name="time" value={this.state.FormTask.time} onChange={this.onChangeHandler} type="date" />
            
-            <br/>
-            <input type="submit"/>
+            <button type="submit" onClick={this.props.close}>submit</button>
         </form>
                 
             </div>

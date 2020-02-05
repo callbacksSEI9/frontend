@@ -1,39 +1,43 @@
 #addEmployee{
-    margin-top: 20px;
-    margin-left: 88%;
+  margin-top: 50px;
+  margin-left: 74%;
+}
+
+#taskButton{
+  margin-right: 15px;
 }
 
 .Popup{
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
 }
 
 .form{
-    background-color: #fefefe;
-    margin: 30px auto;
-    padding: 10px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  background-color: #fefefe;
+  margin: 30px auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .close {
-    color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+color: black;
+text-decoration: none;
+cursor: pointer;
 }

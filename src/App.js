@@ -18,6 +18,7 @@ class App extends Component {
     super()
 
     this.state = {
+      taskFilter: 'none',
       user: null,
       alerts: []
     }
@@ -31,15 +32,18 @@ class App extends Component {
     this.setState({ alerts: [...this.state.alerts, { message, type }] })
   }
 
+  changeTaskFiler = (event)=>{
+    const task = event.target.innerHTML
+    this.setState({taskFilter:task})
+    console.log(this.state.taskFilter)
+}
+
   render () {
     const { alerts, user } = this.state
 
     return (
       <React.Fragment>
-        <Header user={user} />
-        {alerts.map((alert, index) => (
-          <AlertDismissible key={index} variant={alert.type} message={alert.message} />
-        ))}
+        <Header user={user} chnageFilter={this.changeTaskFiler} />
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
@@ -54,7 +58,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/' exact render={()=> 
-            user.manager? (<EmployeeView user={user} />):(<ManagerView user={user} />)
+            user.manager? (<ManagerView user={user} taskFilter={this.state.taskFilter}/>): (<EmployeeView user={user} taskFilter={this.state.taskFilter} />) 
           } />
            <AuthenticatedRoute user={user} path='/emp' render={()=> 
              (<EmployeeList user={user} />)
