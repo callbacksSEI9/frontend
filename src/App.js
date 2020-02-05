@@ -57,7 +57,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/' exact render={()=> 
+          <AuthenticatedRoute user={user} path='/tasks' exact render={()=> 
+            user.manager? (<ManagerView user={user} taskFilter={this.state.taskFilter}/>): (<EmployeeView user={user} taskFilter={this.state.taskFilter} />) 
+          } />
+           <AuthenticatedRoute user={user} path='/tasks/:type' exact render={()=> 
             user.manager? (<ManagerView user={user} taskFilter={this.state.taskFilter}/>): (<EmployeeView user={user} taskFilter={this.state.taskFilter} />) 
           } />
            <AuthenticatedRoute user={user} path='/emp' render={()=> 

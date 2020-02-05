@@ -12,13 +12,18 @@ class TaskList extends Component {
         tasks:[]
      }
     componentDidMount(){
+        console.log("this")
         const user=this.props.user
-        
+        let params=this.props.match.params
+        let type
+
+        params.type ? type= params.type: type= 'none'
+
         axios({
             method: "post",
             url: apiUrl + "/tasks",
             data:{
-                status: 'none'
+                status: type
             },
             headers:{
                 "Authorization":`Bearer ${user.token}`
@@ -34,6 +39,7 @@ class TaskList extends Component {
     }
     render() { 
         console.log(this.state.tasks)
+        console.log(this.props.match.params.type)
         return ( 
             <div>
                 <h1>Tasks:</h1>
@@ -49,4 +55,4 @@ class TaskList extends Component {
     }
 }
  
-export default TaskList;
+export default withRouter(TaskList);

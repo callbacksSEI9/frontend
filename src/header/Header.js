@@ -29,19 +29,19 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <React.Fragment>
-    <Link to="/"><i className="material-icons">home</i> Home</Link>
+    <Link to="/tasks"><i className="material-icons">home</i> Home</Link>
   </React.Fragment>
 )
 
-const Header = ({ user,changeTaskFiler }) => (
+const Header = ({ user }) => (
   <div>
     <aside className="nav">
       <img src='https://i.ibb.co/Npf74xt/app-logo1.png' className='logo'/>
       { alwaysOptions }
       { user ? (user.manager ? managerView:employeeView ):''}
-      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">date_range</i> Queued</Link>: ''}
-      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">event_note</i> In progress</Link>: ''}
-      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">event_available</i> Complete</Link>: ''}
+      { user ? <Link to='/tasks/Queued' ><i className="material-icons">date_range</i> Queued</Link>: ''}
+      { user ? <Link to='/tasks/Inprogress' ><i className="material-icons">event_note</i> In progress</Link>: ''}
+      { user ? <Link to='/tasks/Complete' ><i className="material-icons">event_available</i> Complete</Link>: ''}
       { user ? authenticatedOptions : unauthenticatedOptions }
     </aside>
   </div>
