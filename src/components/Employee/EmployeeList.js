@@ -18,8 +18,7 @@ class EmployeeList extends Component {
             }
         })
         .then((res)=>{
-           let employees = res.data.employees
-           console.log(employees)
+           let employees = res.data.responses
             this.setState({employees:employees})
             // this.setState(({...copyState})=>{
             //     copyState = res.data.departments[0].employees
@@ -37,7 +36,7 @@ class EmployeeList extends Component {
         return ( 
             <ListGroup>
                 {this.state.employees.map((employee,index) => ( 
-                    <EmployeeItem key={index} employee_name={employee.email}></EmployeeItem>
+                    <EmployeeItem key={index} employee_name={employee.name}></EmployeeItem>
                 ))}     
             </ListGroup>
         );

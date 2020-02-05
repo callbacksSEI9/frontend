@@ -1,77 +1,61 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
-import { signUp } from '../../auth/api'
-import messages from '../../auth/messages'
-
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import DropdownItem from 'react-bootstrap/DropdownItem'
+import axios from 'axios'
+import apiUrl from '../../apiConfig'
 class EmployeeForm extends Component {
-  constructor () {
-    super()
 
-    this.state = {
-      email: '',
-      password: '',
-      passwordConfirmation: ''
+    state = {
+   employees:[],
+   user:{}
     }
+
+  componentDidMount(){
+    console.log(this.props)
+    axios({
+      url: apiUrl + '/users',
+      method: 'GET'
+    })
+    .then((res)=>{
+       let employees = res.data.users
+        this.setState({employees:employees})
+    })
+    .catch(error=>alert(error))
+    
   }
 
-  handleChange = event => this.setState({
-    [event.target.name]: event.target.value
-  })
-
-  onSignUp = event => {
-    event.preventDefault()
-
-    const { alert } = this.props
-
-    signUp(this.state)
-    //   .then(() => signIn(this.state))
-    //   .then(res => setUser(res.data.user))
-      .then(() => alert(messages.addEmployeeSuccess, 'success'))
-    //   .then(() => history.push('/'))
-      .catch(error => {
-        console.error(error)
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
-        alert(messages.addEmployeeFailure, 'danger')
-      })
+  handleSelect = (empEmail) =>{
+    let user = this.props.user
+    let credentials={
+      email:empEmail
+    }
+      axios({
+      url: apiUrl + '/departments',
+      method: 'POST',
+      data: {
+        credentials: {
+          email: credentials.email
+        },
+        headers:{
+          "Authorization":`Bearer ${user.token}`
+      }
+      }
+    })
+    .then(res => console.log(res.data))
+    .catch(error=>alert(error))
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
-
     return (
-      <form className='auth-form' onSubmit={this.onSignUp}>
+      <React.Fragment>
         <h3>Add New Employee</h3>
-
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          name="email"
-          value={email}
-          type="email"
-          placeholder="Email"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          required
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
-          required
-          name="passwordConfirmation"
-          value={passwordConfirmation}
-          type="password"
-          placeholder="Confirm Password"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Add</button>
-      </form>
+        <DropdownButton title='Employees' onSelect={()=>{this.handleSelect()}}>
+          {this.state.employees.map((employee,index)=> 
+            <DropdownItem key={index} eventKey={employee.email}> {employee.name} </DropdownItem>
+          )}
+        </DropdownButton>
+      </React.Fragment>
     )
   }
 }
