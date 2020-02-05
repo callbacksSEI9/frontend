@@ -5,23 +5,25 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/change-password">Change Password</Link>
-    <Link to="/sign-out">Sign Out</Link>
+    <Link to="/change-password"><i className="material-icons">loop</i> Change Password</Link>
+    <Link to="/sign-out"><i className="material-icons">exit_to_app</i> Sign Out</Link>
   </React.Fragment>
 )
 
 const managerView = (
-  <Link to='/myemployees' />
+  <React.Fragment>
+  <Link to='/emp' ><i className="material-icons">people</i> My Employees</Link>
+  </React.Fragment>
 )
 
 const employeeView = (
-  <Link to='/otheremployees' >Ohter Tasks</Link>
+  <Link to='/otheremployees' ><i className="material-icons">developer_board</i> Ohter Tasks</Link>
 )
 
 const unauthenticatedOptions = (
   <React.Fragment>
-    <Link to="/sign-up">Sign Up</Link>
-    <Link to="/sign-in">Sign In</Link>
+    <Link to="/sign-up"><i className="material-icons">person_add</i> Sign Up</Link>
+    <Link to="/sign-in"><i className="material-icons">input</i> Sign In</Link>
   </React.Fragment>
 )
 
@@ -31,13 +33,15 @@ const alwaysOptions = (
   </React.Fragment>
 )
 
-const Header = ({ user }) => (
+const Header = ({ user,changeTaskFiler }) => (
   <div>
     <aside className="nav">
       <img src='https://i.ibb.co/Npf74xt/app-logo1.png' className='logo'/>
-      { user && <span>Welcome, {user.name}</span>}
       { alwaysOptions }
-      { user ? (user.manager ? managerView : employeeView):''}
+      { user ? (user.manager ? managerView:employeeView ):''}
+      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">date_range</i> Queued</Link>: ''}
+      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">event_note</i> In progress</Link>: ''}
+      { user ? <Link to='/' onClick={changeTaskFiler}><i className="material-icons">event_available</i> Complete</Link>: ''}
       { user ? authenticatedOptions : unauthenticatedOptions }
     </aside>
   </div>
