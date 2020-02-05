@@ -14,7 +14,7 @@ class TaskItem extends Component {
         this.setState({color:'green'})
       }
       else if(this.props.status == 'Inprogress'){
-        this.setState({color:'orange'})
+        this.setState({color:'yellow'})
       }
     }
 
@@ -29,7 +29,7 @@ class TaskItem extends Component {
     }
 
     makeItInProgress = () =>{
-      this.setState({color:'orange'})
+      this.setState({color:'yellow'})
       this.updateStatus('Inprogress')
     }
 
