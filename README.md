@@ -23,14 +23,14 @@ All without the need for complex workflows, on-boarding or training.
 ## Website ERD, Wireframe and User Stories
 <!-- images -->
 ### ERD
-![ERD](frontend/ERD.png)
+![ERD](img/ERD.png)
 ### Wireframe
 #### Landing Page
-![Home Page](frontend/Landing_page.png)
+![Home Page](img/Landing_page.png)
 #### Manager View Page
-![Manager View Page](frontend/manager_view.png)
+![Manager View Page](img/manager_view.png)
 #### Employee View Page
-![Employee View Page](frontend/employee_view.png)
+![Employee View Page](img/employee_view.png)
 ### User Stories
 User should make an account by signing up
 If the user is manager then the user will sign-in to the manager view
@@ -42,6 +42,8 @@ Employee user can see all tasks and the user (My Tasks, Waiting, Complete, In-pr
 Employee user can change tasks status to (complete, in progress, waiting )
 Employee user can send reports to the manager
 ## Challenges 
+Getting and sending the data to the backend 
+
 
 ## Features and Improvements
 
