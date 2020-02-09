@@ -12,13 +12,14 @@ class EmployeeList extends Component {
         const user = this.props.user
         axios({
             method:'GET',
-            url:apiUrl+'/departments',
+             url: apiUrl + `/departments/${this.props.user._id}`,
             headers:{
                 "Authorization":`Bearer ${user.token}`
             }
         })
         .then((res)=>{
            let employees = res.data.responses
+           console.log(employees)
             this.setState({employees:employees})
             // this.setState(({...copyState})=>{
             //     copyState = res.data.departments[0].employees
@@ -35,6 +36,7 @@ class EmployeeList extends Component {
         ))}  
         return ( 
             <ListGroup>
+                <h1>List Of Employees</h1>
                 {this.state.employees.map((employee,index) => ( 
                     <EmployeeItem key={index} employee_name={employee.name}></EmployeeItem>
                 ))}     
