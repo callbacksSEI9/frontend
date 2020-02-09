@@ -39,9 +39,9 @@ const Header = ({ user }) => (
       <img src='https://i.ibb.co/Npf74xt/app-logo1.png' className='logo'/>
       { alwaysOptions }
       { user ? (user.manager ? managerView:employeeView ):''}
-      { user ? <Link to='/tasks/Queued' ><i className="material-icons">date_range</i> Queued</Link>: ''}
-      { user ? <Link to='/tasks/Inprogress' ><i className="material-icons">event_note</i> In progress</Link>: ''}
-      { user ? <Link to='/tasks/Complete' ><i className="material-icons">event_available</i> Complete</Link>: ''}
+      { user ? <Link to='/tasks/Queued' replace ><i className="material-icons">date_range</i> Queued</Link>: ''}
+      { user ? <Link to='/tasks/Inprogress' replace ><i className="material-icons">event_note</i> In progress</Link>: ''}
+      { user ? <Link to='/tasks/Complete' replace ><i className="material-icons">event_available</i> Complete</Link>: ''}
       { user ? authenticatedOptions : unauthenticatedOptions }
     </aside>
   </div>

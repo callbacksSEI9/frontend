@@ -49,7 +49,7 @@ class ManagerView extends Component {
                 <div className="Popup" style={ {display: this.state.Edisplay} }>
                     <div className="form">
                     <span className="close" onClick={this.closeForm}>&times;</span>
-                    <EmployeeForm />
+                    <EmployeeForm user={this.props.user} />
                     </div>
                 </div>
                 {/* <Chart /> */}

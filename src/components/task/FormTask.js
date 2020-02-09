@@ -2,15 +2,35 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import {withRouter} from 'react-router-dom'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import DropdownItem from 'react-bootstrap/DropdownItem'
+
 class FormTask extends Component {
     state = { 
         FormTask:{
         title:'',
         text:'',
-        time:''
-        }
+        time:'',
+        owner:''
+        },
+        employees:[]
      }
-    
+
+    componentDidMount(){
+        axios({
+            url: apiUrl + `/departments/${this.props.user._id}`,
+            method: 'GET'
+          })
+          .then((res)=>{
+             let employees = res.data.responses
+              this.setState(({...copystate})=>{
+                  copystate.employees = employees
+                  return copystate
+              })
+          })
+          .catch(error=>alert(error))
+          
+    }
     onChangeHandler = event =>{
         const name = event.target.name
         const value = event.target.value
@@ -21,9 +41,8 @@ class FormTask extends Component {
         
         onSubmitHandler = event => {
           event.preventDefault()
-        //   console.log(this.props.user.token)
           axios({
-            url: apiUrl + "/tasks",
+            url: apiUrl + "/newtasks",
             method: "post",
             data:{
                 task: this.state.FormTask
@@ -51,7 +70,11 @@ class FormTask extends Component {
             <input name="text" value={this.state.FormTask.text} onChange={this.onChangeHandler}/>
             <label> Deadline:</label>
             <input name="time" value={this.state.FormTask.time} onChange={this.onChangeHandler} type="date" />
-           
+            <DropdownButton title='name of employee' onSelect={(e)=>{this.state.FormTask.owner = e}}>
+          {this.state.employees.map((employee,index)=> 
+            <DropdownItem key={index} eventKey={employee._id}> {employee.name} </DropdownItem>
+          )}
+        </DropdownButton>
             <button type="submit" onClick={this.props.close}>submit</button>
         </form>
                 

@@ -63,9 +63,10 @@ class App extends Component {
            <AuthenticatedRoute user={user} path='/tasks/:type' exact render={()=> 
             user.manager? (<ManagerView user={user} taskFilter={this.state.taskFilter}/>): (<EmployeeView user={user} taskFilter={this.state.taskFilter} />) 
           } />
-           <AuthenticatedRoute user={user} path='/emp' render={()=> 
-             (<EmployeeList user={user} />)
-          } />
+           <AuthenticatedRoute user={user} path='/emp' render={()=> {
+            // {window.location.reload()}
+             return (<EmployeeList user={user} />)
+           }} />
 
         </main>
       </React.Fragment>

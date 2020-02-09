@@ -8,11 +8,11 @@ class EmployeeForm extends Component {
 
     state = {
    employees:[],
-   user:{}
+   user:{},
+   empEmail:''
     }
 
   componentDidMount(){
-    console.log(this.props)
     axios({
       url: apiUrl + '/users',
       method: 'GET'
@@ -26,20 +26,20 @@ class EmployeeForm extends Component {
   }
 
   handleSelect = (empEmail) =>{
-    let user = this.props.user
-    let credentials={
-      email:empEmail
+    // let user = this.props.user
+  
+    this.state.empEmail = empEmail
+    let credentials ={
+      email:this.state.empEmail
     }
+    console.log(this.state.empEmail)
       axios({
-      url: apiUrl + '/departments',
+      url: apiUrl + `/departments/${this.props.user._id}`,
       method: 'POST',
       data: {
         credentials: {
-          email: credentials.email
-        },
-        headers:{
-          "Authorization":`Bearer ${user.token}`
-      }
+         email: credentials.email
+        }
       }
     })
     .then(res => console.log(res.data))
@@ -49,12 +49,14 @@ class EmployeeForm extends Component {
   render () {
     return (
       <React.Fragment>
-        <h3>Add New Employee</h3>
-        <DropdownButton title='Employees' onSelect={()=>{this.handleSelect()}}>
+        <h6>Add New Employee</h6>
+        <br></br>
+        <DropdownButton title='Employees' onSelect={(empEmail)=>{this.handleSelect(empEmail)}}>
           {this.state.employees.map((employee,index)=> 
             <DropdownItem key={index} eventKey={employee.email}> {employee.name} </DropdownItem>
           )}
         </DropdownButton>
+       
       </React.Fragment>
     )
   }
